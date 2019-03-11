@@ -13,7 +13,7 @@ public class Main {
         ////////////////////////////////////////////////////////////
         //Initialize
         b = new BoundedInteger(5,1,10);
-        System.out.println("Passed Initialize: "+ b.getValue()==5 );
+        System.out.println("Passed Initialize: "+ (b.getValue()==5) );
 
         try{
             b = new BoundedInteger(150,1,10);
@@ -35,7 +35,7 @@ public class Main {
         //setValue
         b = new BoundedInteger(5,1,10);
         b.setValue(3);
-        System.out.println("Passed setValue: "+ b.getValue()==3 );
+        System.out.println("Passed setValue: "+ (b.getValue()==3) );
 
         try{
             b = new BoundedInteger(5,1,10);
@@ -58,10 +58,10 @@ public class Main {
         //addWidth
         b = new BoundedInteger(5,1,10);
         b.addWith(2);
-        System.out.println("Passed addWith(+): "+ b.getValue()==7 );
+        System.out.println("Passed addWith(+): "+ (b.getValue()==7) );
         b = new BoundedInteger(5,1,10);
         b.addWith(-2);
-        System.out.println("Passed addWith(-): "+ b.getValue()==3 );
+        System.out.println("Passed addWith(-): "+ (b.getValue()==3) );
 
         try{
             b = new BoundedInteger(5,1,10);
