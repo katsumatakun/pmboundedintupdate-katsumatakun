@@ -16,4 +16,43 @@ public class BoundedInteger {
 		// Note this should update the value of the BoundedInteger by adding the input parameter to the current value
 	 */
 
+	protected int value;
+	protected int lower;
+	protected int upper;
+
+	public BoundedInteger(int value, int lower, int upper){
+	    if (value > upper || value < lower ){
+	        throw new OutOfBoundsException(" Value Out of Bounds");
+        }
+	    this.value = value;
+	    this.lower = lower;
+	    this.upper = upper;
+    }
+
+    public void setValue(int value){
+		if (value > upper || value < lower ){
+			throw new OutOfBoundsException(" Value Out of Bounds");
+		}
+	    this.value = value;
+    }
+
+    public int getValue(){
+	    return value;
+    }
+
+
+    void addWith(int num){
+
+	    if(value + num > upper || value + num < lower){
+	        throw new OutOfBoundsException("Value Out of Bounds");
+        }
+
+	    value += num;
+
+    }
+
+
+
+
+
 }

@@ -1,4 +1,47 @@
-public class WrappedBoundedInteger {
+public class WrappedBoundedInteger{
+
+    private int value;
+    private int lower;
+    private int upper;
+    public WrappedBoundedInteger(int value, int lower, int upper) {
+
+        while (value > upper) {
+            value = value - upper + lower - 1;
+        }
+        while (value < lower) {
+            value = value + upper - lower + 1;
+        }
+        this.value = value;
+        this.lower = lower;
+        this.upper = upper;
+
+    }
+
+    public void setValue(int num){
+        while (value > upper){
+            value = value - upper + lower -1;
+        }
+        while (value < lower){
+            value = value + upper -lower + 1;
+        }
+
+    }
+
+    public int getValue(){
+        return value;
+    }
+
+    public void addWith(int num){
+        while(value + num > upper){
+            value = value + num - upper + lower -1;
+        }
+
+        while (value + num < lower){
+            value = value + num + upper - lower +1;
+        }
+
+    }
+
 
 /*
 A WrappedBoundedInteger is similar to the BoundedInteger.
