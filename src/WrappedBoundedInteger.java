@@ -6,10 +6,10 @@ public class WrappedBoundedInteger{
     public WrappedBoundedInteger(int value, int lower, int upper) {
 
         while (value > upper) {
-            value = value - upper + lower - 1;
+            value = (value - upper) + lower - 1;
         }
         while (value < lower) {
-            value = value + upper - lower + 1;
+            value = upper - (lower - value) + 1;
         }
         this.value = value;
         this.lower = lower;
@@ -18,13 +18,14 @@ public class WrappedBoundedInteger{
     }
 
     public void setValue(int num){
-        while (value > upper){
-            value = value - upper + lower -1;
+        while (num > upper){
+            num = num - upper + lower -1;
         }
-        while (value < lower){
-            value = value + upper -lower + 1;
+        while (num < lower){
+            num = upper - (lower - num) + 1;
         }
 
+        value = num;
     }
 
     public int getValue(){
@@ -32,12 +33,13 @@ public class WrappedBoundedInteger{
     }
 
     public void addWith(int num){
-        while(value + num > upper){
-            value = value + num - upper + lower -1;
+        value += num;
+        while(value > upper){
+            value = (value) - upper + lower -1;
         }
 
-        while (value + num < lower){
-            value = value + num + upper - lower +1;
+        while (value < lower){
+            value = upper - (lower - value + num) +1;
         }
 
     }
