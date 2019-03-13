@@ -89,7 +89,7 @@ public class Main {
         ////////////////////////////////////////////////////////////
         //Initialize
         w = new WrappedBoundedInteger(5, 1, 10);
-        System.out.println("Passed Initialize: " + checkWrapped(1, 10, 5,w.getValue()));
+        System.out.println("Passed Initialize: " + checkWrapped(1, 10, 5, w.getValue()));
 
 
         //Interval from negative to positive
@@ -99,55 +99,58 @@ public class Main {
 
         //Interval from negative to negative
         w = new WrappedBoundedInteger(-284, -100, -42);
-        System.out.println("Passed Bad Initialize (Too Low): " + checkWrapped(-42, -100, -284,w.getValue()));
+        System.out.println("Passed Bad Initialize (Too Low): " + checkWrapped(-42, -100, -284, w.getValue()));
 
         //Interval accepts ony one integer
         w = new WrappedBoundedInteger(0, 0, 0);
-        System.out.println("Passed Bad Initialize (One Possible Value): " + checkWrapped(0, 0, 0,w.getValue()));
+        System.out.println("Passed Bad Initialize (One Possible Value): " + checkWrapped(0, 0, 0, w.getValue()));
 
 
         ////////////////////////////////////////////////////////////
         //setValue
         w = new WrappedBoundedInteger(-10, 1, 10);
         w.setValue(3);
-        System.out.println("Passed setValue: " + checkWrapped(10, -10, 3 ,w.getValue()));
+        System.out.println("Passed setValue: " + checkWrapped(10, -10, 3, w.getValue()));
 
 
         w = new WrappedBoundedInteger(5, -8, 0);
         w.setValue(23);
-        System.out.println("Passed Bad Set (High): " + checkWrapped(0, -8, 23 ,w.getValue()));
+        System.out.println("Passed Bad Set (High): " + checkWrapped(0, -8, 23, w.getValue()));
 
 
         w = new WrappedBoundedInteger(5, -10, -6);
         w.setValue(-15);
-        System.out.println("Passed Bad Set (Low): " + checkWrapped(-6, -10, -15,w.getValue()));
+        System.out.println("Passed Bad Set (Low): " + checkWrapped(-6, -10, -15, w.getValue()));
 
         ////////////////////////////////////////////////////////////
         //addWidth
         w = new WrappedBoundedInteger(5, -1, 10);
         w.addWith(2);
-        System.out.println("Passed addWith(+): " + checkWrapped(10, -1, 5+2,w.getValue()));
+        System.out.println("Passed addWith(+): " + checkWrapped(10, -1, 5 + 2, w.getValue()));
         w = new WrappedBoundedInteger(5, 1, 10);
         w.addWith(-2);
-        System.out.println("Passed addWith(-): " + checkWrapped(10, 1, 5-2,w.getValue()));
+        System.out.println("Passed addWith(-): " + checkWrapped(10, 1, 5 - 2, w.getValue()));
 
 
         w = new WrappedBoundedInteger(5, 1, 10);
         w.addWith(100);
-        System.out.println("Passed Bad Add (High): " + checkWrapped(10, 1, 100+5, w.getValue()));
+        System.out.println("Passed Bad Add (High): " + checkWrapped(10, 1, 100 + 5, w.getValue()));
 
 
         w = new WrappedBoundedInteger(5, 1, 10);
         w.addWith(-100);
-        System.out.println("Passed Bad Add (Low): " + checkWrapped(10, 1, 5-100, w.getValue()));
+        System.out.println("Passed Bad Add (Low): " + checkWrapped(10, 1, 5 - 100, w.getValue()));
 
         w = new WrappedBoundedInteger(100, -200, -100);
         //System.out.println(w);
         int value = w.getValue();
         w.addWith(1000);
-        System.out.println("Passed Create Bad Input and then Add Bad Value: " + checkWrapped(-100, -200, value+1000, w.getValue()));
+        System.out.println("Passed Create Bad Input and then Add Bad Value: " + checkWrapped(-100, -200, value + 1000, w.getValue()));
+
 
     }
+
+
 
     private static boolean checkWrapped(int upper, int lower, int actual, int wrapped){
 

@@ -48,14 +48,7 @@ public class WrappedBoundedInteger{
     }
 
     public void addWith(int num){
-        value += num;
-        while(value > upper){
-            value = (value) - upper + lower -1;
-        }
-
-        while (value < lower){
-            value = upper - (lower - value + num) +1;
-        }
+        setValue(num+value);
     }
 
 }
