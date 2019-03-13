@@ -84,7 +84,7 @@ public class Main {
 
         WrappedBoundedInteger w;
         //formula for wrapping: <actual value> = <wrapped value> + <interval> * <integer>
-        //                    : <actual value> - <wrapped value>
+        //                    : (<actual value> - <wrapped value>) % <interval> should be 0
         ////////////////////////////////////////////////////////////
         //Initialize
         w = new WrappedBoundedInteger(5, 1, 10);
@@ -117,15 +117,15 @@ public class Main {
         System.out.println("Passed Bad Set (High): " + checkWrapped(0, -8, 23 ,w.getValue()));
 
 
-        w = new WrappedBoundedInteger(5, -10, 0);
+        w = new WrappedBoundedInteger(5, -10, -6);
         w.setValue(-15);
-        System.out.println("Passed Bad Set (Low): " + checkWrapped(0, -10, -15,w.getValue()));
+        System.out.println("Passed Bad Set (Low): " + checkWrapped(-6, -10, -15,w.getValue()));
 
         ////////////////////////////////////////////////////////////
         //addWidth
-        w = new WrappedBoundedInteger(5, 1, 10);
+        w = new WrappedBoundedInteger(5, -1, 10);
         w.addWith(2);
-        System.out.println("Passed addWith(+): " + checkWrapped(10, 1, 5+2,w.getValue()));
+        System.out.println("Passed addWith(+): " + checkWrapped(10, -1, 5+2,w.getValue()));
         w = new WrappedBoundedInteger(5, 1, 10);
         w.addWith(-2);
         System.out.println("Passed addWith(-): " + checkWrapped(10, 1, 5-2,w.getValue()));
@@ -137,15 +137,21 @@ public class Main {
 
 
         w = new WrappedBoundedInteger(5, 1, 10);
-        w.addWith(-10);
-        System.out.println("Passed Bad Add (Low): " + checkWrapped(10, 1, 5-10, w.getValue()));
+        w.addWith(-100);
+        System.out.println("Passed Bad Add (Low): " + checkWrapped(10, 1, 5-100, w.getValue()));
 
+        w = new WrappedBoundedInteger(100, -200, -100);
+        //System.out.println(w.getValue());
+        int value = w.getValue();
+        w.addWith(1000);
+        System.out.println("Passed Create Bad Input and then Add Bad Value: " + checkWrapped(-100, -200, value+1000, w.getValue()));
 
     }
 
     private static boolean checkWrapped(int upper, int lower, int actual, int wrapped){
 
         return (actual-wrapped) % (upper-lower+1) == 0;
+
 
     }
 }

@@ -14,7 +14,6 @@ public class WrappedBoundedInteger{
         this.value = value;
         this.lower = lower;
         this.upper = upper;
-
     }
 
     public void setValue(int num){
