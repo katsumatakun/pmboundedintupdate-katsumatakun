@@ -85,6 +85,7 @@ public class Main {
         WrappedBoundedInteger w;
         //formula for wrapping: <actual value> = <wrapped value> + <interval> * <integer>
         //                    : (<actual value> - <wrapped value>) % <interval> should be 0
+        //                    : interval = (upper - lower + 1)
         ////////////////////////////////////////////////////////////
         //Initialize
         w = new WrappedBoundedInteger(5, 1, 10);
@@ -141,7 +142,7 @@ public class Main {
         System.out.println("Passed Bad Add (Low): " + checkWrapped(10, 1, 5-100, w.getValue()));
 
         w = new WrappedBoundedInteger(100, -200, -100);
-        //System.out.println(w.getValue());
+        //System.out.println(w);
         int value = w.getValue();
         w.addWith(1000);
         System.out.println("Passed Create Bad Input and then Add Bad Value: " + checkWrapped(-100, -200, value+1000, w.getValue()));

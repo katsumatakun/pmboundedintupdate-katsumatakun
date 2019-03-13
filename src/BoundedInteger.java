@@ -41,7 +41,11 @@ public class BoundedInteger {
     }
 
 
-    void addWith(int num){
+	public String toString(){
+		return Integer.toString(value);
+	}
+
+    public void addWith(int num){
 
 	    if(value + num > upper || value + num < lower){
 	        throw new OutOfBoundsException("Value Out of Bounds");

@@ -1,8 +1,20 @@
 public class WrappedBoundedInteger{
 
+
+/*
+    A WrappedBoundedInteger is similar to the BoundedInteger.
+    However, instead of generating exceptions for illegal values,
+    this class "wraps around".
+
+    For example, suppose that we have a WrappedBoundedInteger "minutes"
+    with bounds of 0 to 59 and whose value is 52.
+    Adding 10 to this object gives it a value of 2.
+ */
+
     private int value;
     private int lower;
     private int upper;
+
     public WrappedBoundedInteger(int value, int lower, int upper) {
 
         while (value > upper) {
@@ -31,6 +43,10 @@ public class WrappedBoundedInteger{
         return value;
     }
 
+    public String toString(){
+        return Integer.toString(value);
+    }
+
     public void addWith(int num){
         value += num;
         while(value > upper){
@@ -40,18 +56,6 @@ public class WrappedBoundedInteger{
         while (value < lower){
             value = upper - (lower - value + num) +1;
         }
-
     }
-
-
-/*
-A WrappedBoundedInteger is similar to the BoundedInteger.
-However, instead of generating exceptions for illegal values,
-this class "wraps around".
-
-For example, suppose that we have a WrappedBoundedInteger "minutes"
-with bounds of 0 to 59 and whose value is 52.
-Adding 10 to this object gives it a value of 2.
- */
 
 }
