@@ -1,4 +1,4 @@
-public class WrappedBoundedInteger{
+public class WrappedBoundedInteger extends BoundedInteger {
 
 
 /*
@@ -11,23 +11,13 @@ public class WrappedBoundedInteger{
     Adding 10 to this object gives it a value of 2.
  */
 
-    private int value;
-    private int lower;
-    private int upper;
+
 
     public WrappedBoundedInteger(int value, int lower, int upper) {
-
-        while (value > upper) {
-            value = (value - upper) + lower - 1;
-        }
-        while (value < lower) {
-            value = upper - (lower - value) + 1;
-        }
-        this.value = value;
-        this.lower = lower;
-        this.upper = upper;
+        super(value, lower, upper);
     }
 
+    @Override
     public void setValue(int num){
         while (num > upper){
             num = num - upper + lower -1;
@@ -39,16 +29,5 @@ public class WrappedBoundedInteger{
         value = num;
     }
 
-    public int getValue(){
-        return value;
-    }
-
-    public String toString(){
-        return Integer.toString(value);
-    }
-
-    public void addWith(int num){
-        setValue(num+value);
-    }
 
 }

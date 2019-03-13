@@ -21,12 +21,10 @@ public class BoundedInteger {
 	protected int upper;
 
 	public BoundedInteger(int value, int lower, int upper){
-	    if (value > upper || value < lower ){
-	        throw new OutOfBoundsException(" Value Out of Bounds");
-        }
-	    this.value = value;
+
 	    this.lower = lower;
 	    this.upper = upper;
+		setValue(value);
     }
 
     public void setValue(int value){
